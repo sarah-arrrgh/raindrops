@@ -1,6 +1,6 @@
 function Assembler () {
-  this.maxBorderWidth = 15;
-  this.maxSpeed = 1;
+  this.maxBorderWidth = 7;
+  this.maxSpeed = 10;
   this.borderStyles = ['solid', 'dotted', 'dashed', 'double'];
   this.colors = ['#A0151E', '#FFD633', '#661400', '#E55419'];
   this.animation;
@@ -19,14 +19,14 @@ Assembler.prototype.reset = function () {
 
 Assembler.prototype.startInterval = function () {
   var speed = randPosInt(this.maxSpeed);
-  var i = 0;
+  // var i = 0;
   var self = this;
   this.animation = setInterval(function () {
     self.rainDrop.addDrop(speed, sampleFromArray(self.colors));
     scrollPage();
-    i++;
+    // i++;
     if (self.rainDrop.$largestDrop.width() > $(window).width() * 1.3) {
-      clearInterval(this.animation);
+      clearInterval(self.animation);
     }
-  }, 10);
+  }, 50);
 };
